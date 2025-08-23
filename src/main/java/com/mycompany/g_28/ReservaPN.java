@@ -9,5 +9,5 @@ package com.mycompany.g_28;
  * @author franc
  */
 public class ReservaPN {
-    
+    public int capacidad;
 }

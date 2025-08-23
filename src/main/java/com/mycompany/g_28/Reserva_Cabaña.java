@@ -10,4 +10,10 @@ package com.mycompany.g_28;
  */
 public class Reserva_Cabaña extends ReservaPN {
     
+    public void metodoTest(){
+        this.capacidad = 0 ;
+    }
+    
+    
 }
+
