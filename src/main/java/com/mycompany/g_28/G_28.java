@@ -11,6 +11,7 @@ package com.mycompany.g_28;
 public class G_28 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        //crear sistema
+        SistemaReservasParque S_ReservasParque = new SistemaReservasParque();
     }
 }

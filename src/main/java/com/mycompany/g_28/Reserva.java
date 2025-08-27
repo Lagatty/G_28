@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.g_28;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  *
@@ -10,27 +12,37 @@ package com.mycompany.g_28;
  */
 
 //Las reservas son del dia
-public class Zona {
-    private int capacidad;
+public class Reserva {
     private float tarifa;
     private String fecha;
-    private String nombreZona;
+    private String tipoReserva;
+    private Persona persona;
 
-    public String getNombreZona() {
-        return nombreZona;
+    public String getTipoReserva() {
+        return tipoReserva;
     }
 
-    public void setNombreZona(String nombreZona) {
-        this.nombreZona = nombreZona;
+    public void setTipoReserva(String tipoReserva) {
+        this.tipoReserva = tipoReserva;
     }
 
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+    
+    
     //Construct 
-    public Zona(int capacidad, float tarifa, String nombreZona) {
-        this.capacidad = capacidad;
-        this.tarifa = tarifa;
-        this.nombreZona = nombreZona;
+    public Reserva() {
+        //Preguntar si es cabaña o camping
+        //Pregunta si quiere guia
+        //Crear persona que servira despues para el mapa en Sistema :D
+        
     }
-
+    
     public String getFecha() {
         return fecha;
     }

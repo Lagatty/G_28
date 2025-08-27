@@ -4,16 +4,25 @@
  */
 package com.mycompany.g_28;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Parque {
     private String nombreParque;
-    private ArrayList<Zona> reservasZonas = new ArrayList<>();
+    
+    private ArrayList<Reserva> reservasZonas = new ArrayList<>();
+    
+    //Guarda ruts asociados a reservas
+    private Map<String,Reserva> mapaRut_Reserva = new HashMap<>();
     
     //SIA 1.8
-    void agregarReserva(int capacidad, float tarifa, String nombreZona){
+    void agregarZona(){
         //crear reserva
-        Zona nuevaReserva = new Zona(capacidad, tarifa, nombreZona);
+        //Se le piden por consola para la zona
+        Reserva nuevaReserva = new Reserva(capacidad, tarifa, nombreZona);
         //Agregar
         reservas.add(nuevaReserva);
     }
+    
+    void eliminarZona()
 }
