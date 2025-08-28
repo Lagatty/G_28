@@ -16,7 +16,7 @@ public class Parque {
     private Map<String,Reserva> mapaRut_Reserva = new HashMap<>();
     
     //SIA 1.8
-    void agregarZona(){
+    void agregarReserva(){
         //crear reserva
         //Se le piden por consola para la zona
         Reserva nuevaReserva = new Reserva(capacidad, tarifa, nombreZona);
@@ -24,5 +24,5 @@ public class Parque {
         reservas.add(nuevaReserva);
     }
     
-    void eliminarZona()
+    void eliminarReserva()
 }
