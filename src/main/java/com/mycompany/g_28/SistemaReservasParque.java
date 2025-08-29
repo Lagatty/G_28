@@ -5,7 +5,9 @@
 package com.mycompany.g_28;
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /*
 Sistema de Gestión de Reservas en Parques Nacionales: Administración de reservas de
@@ -14,60 +16,169 @@ tarifas.
 */
 public class SistemaReservasParque {
     
-    //Se almacenan los permisos 
-    private ArrayList<String> permisos = new ArrayList<>();
+     // SIA1.5 - Primera colección de objetos
+    private ArrayList<Parque> parques;
+    private CalculadoraTarifas calculadora;
+    private BufferedReader lector;
     
-    //Declarar coleccion de parques
-    private ArrayList<Parque> parques = new ArrayList<>();
-    //SIA 1.4
-    public void crearParques(int cantParques){
+    public SistemaReservasParque() {
+        this.parques = new ArrayList<>();
+        this.calculadora = new CalculadoraTarifas();
+        this.lector = new BufferedReader(new InputStreamReader(System.in));
         
-    }
-    
-    public void agregarParque(){
-        //crear parque
+        // SIA1.4 - Datos iniciales dentro del código
+        inicializarDatos();
         
-    }
-    
-    //SIA 1.8
-    public void listarParques(){
-        
-    }
-    
-    public void listarClientes(){
-        
-    }
-    
-    //agregar para las excepciones
-    public void mostrarMenu(){
-        int opcion = 0;
-        //declarar lector
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        
-        System.out.println("1. Crear reserva \n 2. Crear parque \n 3. Listar reservas. \n 4. Salir");
-        
-        while(opcion!=4){
-            opcion = Integer.parseInt(lector.readLine());
-            switch (opcion) {
-                case 1:
-                    
-                    break; 
-                case 2:
-                    
-                    break;
-                case 3:
-                    
-                default:
-                    System.out.println("Ingrese opcion valida");
-                    break;
-            }
-            
+        try {
+            mostrarMenu();
+        } catch (IOException e) {
+            System.out.println("Error en el sistema: " + e.getMessage());
         }
     }
     
-    public SistemaReservasParque(){
-        mostrarMenu();
+    // SIA1.4 - Crear datos iniciales (solo parques base)
+    private void inicializarDatos() {
+        // Crear parques iniciales disponibles
+        Parque parque1 = new Parque("Torres del Paine", "Patagonia", 200);
+        Parque parque2 = new Parque("Conguillio", "Araucanía", 150);
+        Parque parque3 = new Parque("Lauca", "Arica", 100);
+        
+        parques.add(parque1);
+        parques.add(parque2);
+        parques.add(parque3);
+        
+        // Las reservas serán ingresadas por el usuario por pantalla
     }
     
+    // SIA1.8 - Menú del sistema
+    public void mostrarMenu() throws IOException {
+        int opcion = 0;
+        
+        System.out.println("=== SISTEMA DE RESERVAS PARQUES NACIONALES ===");
+        
+        while(opcion != 4) {
+            System.out.println("\n--- MENU PRINCIPAL ---");
+            System.out.println("1. Crear reserva");
+            System.out.println("2. Mostrar todas las reservas"); // SIA1.8.2
+            System.out.println("3. Listar parques disponibles");
+            System.out.println("4. Salir");
+            System.out.print("Ingrese opcion: ");
+            
+            try {
+                opcion = Integer.parseInt(lector.readLine());
+                
+                switch (opcion) {
+                    case 1:
+                        crearReserva(); // SIA1.8.1 - Inserción manual
+                        break; 
+                    case 2:
+                        listarTodasLasReservas(); // SIA1.8.2 - Mostrar listado
+                        break;
+                    case 3:
+                        listarParques();
+                        break;
+                    case 4:
+                        System.out.println("¡Gracias por usar el sistema!");
+                        break;
+                    default:
+                        System.out.println("Ingrese opcion valida (1-4)");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor ingrese un numero valido");
+            }
+        }
+    }
     
-}
+    // SIA1.8.1 - Inserción manual/agregar elemento (para la colección anidada)
+    private void crearReserva() throws IOException {
+        System.out.println("\n--- CREAR NUEVA RESERVA ---");
+        
+        // Mostrar parques disponibles
+        listarParques();
+        System.out.print("Seleccione el numero del parque: ");
+        int numParque = Integer.parseInt(lector.readLine()) - 1;
+        
+        if (numParque < 0 || numParque >= parques.size()) {
+            System.out.println("Parque no valido");
+            return;
+        }
+        
+        Parque parqueSeleccionado = parques.get(numParque);
+        
+        // Datos del cliente
+        System.out.print("Ingrese su RUT: ");
+        String rut = lector.readLine();
+        System.out.print("Ingrese su nombre: ");
+        String nombre = lector.readLine();
+        Persona persona = new Persona(rut, nombre);
+        
+        // Datos de la reserva
+        System.out.print("Ingrese fecha (DD/MM/AAAA): ");
+        String fecha = lector.readLine();
+        
+        System.out.println("Servicios disponibles:");
+        System.out.println("1. CAMPING ($15.000)");
+        System.out.println("2. CABANA ($45.000)");
+        System.out.print("¿Que tipo de alojamiento desea? (1-2): ");
+        int tipoAlojamiento = Integer.parseInt(lector.readLine());
+        
+        String tipoReserva;
+        List<String> servicios = new ArrayList<>();
+        
+        if (tipoAlojamiento == 1) {
+            tipoReserva = "CAMPING";
+            servicios.add("CAMPING");
+        } else {
+            tipoReserva = "CABANA";
+            servicios.add("CABANA");
+        }
+        
+        System.out.print("¿Desea agregar guia turistico? ($20.000) (s/n): ");
+        String conGuia = lector.readLine();
+        if (conGuia.toLowerCase().equals("s")) {
+            servicios.add("GUIA");
+            tipoReserva += " + GUIA";
+        }
+        
+        // Calcular tarifa
+        float tarifa = calculadora.calcularTarifa(servicios);
+        
+        // Crear y agregar reserva a la colección anidada
+        parqueSeleccionado.agregarReserva(fecha, tipoReserva, persona, tarifa);
+        
+        System.out.println("\n¡RESERVA CREADA EXITOSAMENTE!");
+        System.out.println("Parque: " + parqueSeleccionado.getNombre());
+        System.out.println("Cliente: " + persona.getNombre());
+        System.out.println("Servicios: " + tipoReserva);
+        System.out.println("Fecha: " + fecha);
+        System.out.println("Tarifa total: $" + tarifa);
+    }
+    
+    // SIA1.8.2 - Mostrar listado de elementos (colección anidada)
+    private void listarTodasLasReservas() {
+        System.out.println("\n--- TODAS LAS RESERVAS ---");
+        
+        boolean hayReservas = false;
+        for (Parque parque : parques) {
+            if (!parque.getReservas().isEmpty()) {
+                System.out.println("\n️ " + parque.getNombre() + ":");
+                for (Reserva reserva : parque.getReservas()) {
+                    System.out.println("  " + reserva.toString());
+                }
+                hayReservas = true;
+            }
+        }
+        
+        if (!hayReservas) {
+            System.out.println("No hay reservas registradas en el sistema.");
+        }
+    }
+    
+    private void listarParques() {
+        System.out.println("\n--- PARQUES DISPONIBLES ---");
+        for (int i = 0; i < parques.size(); i++) {
+            System.out.println((i + 1) + ". " + parques.get(i).toString());
+        }
+    }
+    }

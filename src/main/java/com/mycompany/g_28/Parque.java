@@ -4,8 +4,7 @@
  */
 package com.mycompany.g_28;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 //SIA1.3 Creacion de Clase Parque
 class Parque {
