@@ -19,10 +19,12 @@ public class Parque {
     void agregarReserva(){
         //crear reserva
         //Se le piden por consola para la zona
-        Reserva nuevaReserva = new Reserva(capacidad, tarifa, nombreZona);
+        Reserva nuevaReserva = new Reserva();
         //Agregar
-        reservas.add(nuevaReserva);
+        reservasZonas.add(nuevaReserva);
     }
     
-    void eliminarReserva()
+    void eliminarReserva(){
+        
+    }
 }
