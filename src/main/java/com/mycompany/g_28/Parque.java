@@ -7,20 +7,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+//SIA1.3 Creacion de Clase Parque
 class Parque {
     private String nombre;
     private String ubicacion;
     private int capacidadMaxima;
-    private List<Reserva> reservas; //SIA1.5 creando primera coleccion
+    private List<Reserva> reservas; //SIA1.5 segunda colección 
     
     public Parque(String nombre, String ubicacion, int capacidadMaxima) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.capacidadMaxima = capacidadMaxima;
-        this.reservas = new ArrayList<>();
+        this.reservas = new ArrayList<>(); //coleccion anidada
     }
     
-    // Getters & Setters
+    //Getters & Setters
     public String getNombre() { 
         return nombre; 
     }
@@ -33,10 +34,10 @@ class Parque {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion; 
     }
-    public int getCapacidadMaxima() { 
+    public int getCapacidadMaxima(){ 
         return capacidadMaxima; 
     }
-    public void setCapacidadMaxima(int capacidadMaxima) { 
+    public void setCapacidadMaxima(int capacidadMaxima){ 
         this.capacidadMaxima = capacidadMaxima; 
     }
     public List<Reserva> getReservas() { 
@@ -46,14 +47,26 @@ class Parque {
         this.reservas = reservas; 
     }
     
-    // SIA1.6 - Sobrecarga de métodos
+    // SIA1.6 sobrecarga de metodos
     public void agregarReserva(Reserva reserva) {
         reservas.add(reserva);
     }
     
-    public void agregarReserva(String rutPersona, List<String> servicios) {
+    public void agregarReserva(String fecha, String tipoReserva, Persona persona, float tarifa) {
         String id = "R" + (reservas.size() + 1);
-        Reserva nuevaReserva = new Reserva(id, rutPersona, servicios);
+        Reserva nuevaReserva = new Reserva(id, fecha, tipoReserva, persona, tarifa);
         reservas.add(nuevaReserva);
+    }
+    
+    public void agregarReserva(String fecha, String tipoReserva, Persona persona) {
+        String id = "R" + (reservas.size() + 1);
+        float tarifaDefault = 25000f; //creamos una tarifa por defecto.
+        Reserva nuevaReserva = new Reserva(id, fecha, tipoReserva, persona, tarifaDefault);
+        reservas.add(nuevaReserva);
+    }
+    
+    
+    public String toString() {
+        return nombre + " - " + ubicacion + " (Capacidad: " + capacidadMaxima + ", Reservas: " + reservas.size() + ")";
     }
 }
