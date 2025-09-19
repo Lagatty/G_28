@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import java.io.File;
 
 /*
 Sistema de Gestión de Reservas en Parques Nacionales: Administración de reservas de
@@ -20,6 +22,28 @@ public class SistemaReservasParque {
     private ArrayList<Parque> parques;
     private CalculadoraTarifas calculadora;
     private BufferedReader lector;
+    
+    public void guardarSistema(String archivo) {
+    XmlMapper xmlMapper = new XmlMapper();
+    try {
+        xmlMapper.writeValue(new File(archivo), this.parques);
+        System.out.println("Sistema guardado en " + archivo);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
+    
+    public void cargarSistema(String archivo) {
+    XmlMapper xmlMapper = new XmlMapper();
+    try {
+        List<Parque> cargados = xmlMapper.readValue(new File(archivo),
+                xmlMapper.getTypeFactory().constructCollectionType(List.class, Parque.class));
+        this.parques = new ArrayList<>(cargados);
+        System.out.println("Sistema cargado desde " + archivo);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
     
     public SistemaReservasParque() {
         this.parques = new ArrayList<>();
@@ -61,7 +85,9 @@ public class SistemaReservasParque {
             System.out.println("1. Crear reserva");
             System.out.println("2. Mostrar todas las reservas"); // SIA1.8.2
             System.out.println("3. Listar parques disponibles");
-            System.out.println("4. Salir");
+            System.out.println("4. Guardar sistema");
+            System.out.println("5. Cargar sistema");
+            System.out.println("6. Salir");
             System.out.print("Ingrese opcion: ");
             
             try {
@@ -78,10 +104,18 @@ public class SistemaReservasParque {
                         listarParques();
                         break;
                     case 4:
-                        System.out.println("¡Gracias por usar el sistema!");
+                        guardarSistema("sistema.xml");
                         break;
+                    case 5:
+                        cargarSistema("sistema.xml");
+                        break;
+
+                    case 6:
+                        guardarSistema("sistema.xml");
+                        System.out.println("¡Gracias por usar el sistema!");
+                        break;                    
                     default:
-                        System.out.println("Ingrese opcion valida (1-4)");
+                        System.out.println("Ingrese opcion valida (1-6)");
                         break;
                 }
             } catch (NumberFormatException e) {

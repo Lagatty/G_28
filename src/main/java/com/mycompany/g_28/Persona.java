@@ -13,6 +13,10 @@ public class Persona {
         this.rut = rut;
         this.nombre = nombre;
     }
+    
+    public Persona(){
+        
+    }
     //Getters & Setters
     public String getRut() {
         return rut;

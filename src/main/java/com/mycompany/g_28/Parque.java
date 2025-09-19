@@ -20,6 +20,10 @@ class Parque {
         this.reservas = new ArrayList<>(); //coleccion anidada
     }
     
+    public Parque(){
+        
+    }
+    
     //Getters & Setters
     public String getNombre() { 
         return nombre; 

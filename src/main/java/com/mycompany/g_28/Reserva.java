@@ -22,6 +22,10 @@ class Reserva {
         this.tarifa = tarifa;
     }
     
+    public Reserva(){
+        
+    }
+    
     // Getters & Setters completos
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
