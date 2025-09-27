@@ -24,13 +24,13 @@ public class SistemaReservasParque {
     private BufferedReader lector;
     
     public void guardarSistema(String archivo) {
-    XmlMapper xmlMapper = new XmlMapper();
-    try {
-        xmlMapper.writeValue(new File(archivo), this.parques);
-        System.out.println("Sistema guardado en " + archivo);
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+        XmlMapper xmlMapper = new XmlMapper();
+        try {
+            xmlMapper.writeValue(new File(archivo), this.parques);
+            System.out.println("Sistema guardado en " + archivo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public void cargarSistema(String archivo) {
@@ -52,16 +52,17 @@ public class SistemaReservasParque {
         
         // SIA1.4 - Datos iniciales dentro del código
         inicializarDatos();
-        
+        /*
         try {
             mostrarMenu();
         } catch (IOException e) {
             System.out.println("Error en el sistema: " + e.getMessage());
         }
+        */
     }
     
     // SIA1.4 - Crear datos iniciales (solo parques base)
-    private void inicializarDatos() {
+    public void inicializarDatos() {
         // Crear parques iniciales disponibles
         Parque parque1 = new Parque("Torres del Paine", "Patagonia", 200);
         Parque parque2 = new Parque("Conguillio", "Araucanía", 150);
@@ -80,7 +81,7 @@ public class SistemaReservasParque {
         
         System.out.println("=== SISTEMA DE RESERVAS PARQUES NACIONALES ===");
         
-        while(opcion != 4) {
+        while(opcion != 6) {
             System.out.println("\n--- MENU PRINCIPAL ---");
             System.out.println("1. Crear reserva");
             System.out.println("2. Mostrar todas las reservas"); // SIA1.8.2
@@ -109,7 +110,6 @@ public class SistemaReservasParque {
                     case 5:
                         cargarSistema("sistema.xml");
                         break;
-
                     case 6:
                         guardarSistema("sistema.xml");
                         System.out.println("¡Gracias por usar el sistema!");
@@ -125,7 +125,7 @@ public class SistemaReservasParque {
     }
     
     // SIA1.8.1 - Inserción manual/agregar elemento (para la colección anidada)
-    private void crearReserva() throws IOException {
+    public void crearReserva() throws IOException {
         System.out.println("\n--- CREAR NUEVA RESERVA ---");
         
         // Mostrar parques disponibles
@@ -190,7 +190,7 @@ public class SistemaReservasParque {
     }
     
     // SIA1.8.2 - Mostrar listado de elementos (colección anidada)
-    private void listarTodasLasReservas() {
+    public void listarTodasLasReservas() {
         System.out.println("\n--- TODAS LAS RESERVAS ---");
         
         boolean hayReservas = false;
@@ -209,7 +209,7 @@ public class SistemaReservasParque {
         }
     }
     
-    private void listarParques() {
+    public void listarParques() {
         System.out.println("\n--- PARQUES DISPONIBLES ---");
         for (int i = 0; i < parques.size(); i++) {
             System.out.println((i + 1) + ". " + parques.get(i).toString());

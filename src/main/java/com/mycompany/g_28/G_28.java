@@ -4,14 +4,13 @@
 
 package com.mycompany.g_28;
 
-/**
- *
- * @author franc
- */
+import java.io.IOException;
+
 public class G_28 {
 
-    public static void main(String[] args) {
-        //crear sistema
-        SistemaReservasParque S_ReservasParque = new SistemaReservasParque();
+    public static void main(String[] args) throws IOException {
+        //crear sistema en ventanas
+        new JFrame_MainWindows();
+        
     }
 }
