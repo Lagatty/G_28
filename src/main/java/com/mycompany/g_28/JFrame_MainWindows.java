@@ -9,10 +9,10 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
     /**
      * Creates new form JFrame_MainWindows
      */
-    SistemaReservasParque s_Reservas ;
+    SistemaReservasParque s_reservas ;
     
     public JFrame_MainWindows() {
-        s_Reservas = new SistemaReservasParque();
+        s_reservas = new SistemaReservasParque();
         initComponents();
     }
 
@@ -25,57 +25,207 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButton_CrearReserva = new javax.swing.JButton();
+        jButton_listarReservas = new javax.swing.JButton();
+        jButton_listarParques = new javax.swing.JButton();
+        jButton_GuardarSistema = new javax.swing.JButton();
+        jButton_GuardarySalir = new javax.swing.JButton();
+        jButton_CargarSistema = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Reservas Parques");
 
-        jButton1.setText("Crear Reserva");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton_CrearReserva.setText("Crear Reserva");
+        jButton_CrearReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jButton_CrearReservaMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_CrearReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_CrearReservaActionPerformed(evt);
             }
         });
+
+        jButton_listarReservas.setText("Listar Reservas");
+        jButton_listarReservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_listarReservasMouseClicked(evt);
+            }
+        });
+        jButton_listarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_listarReservasActionPerformed(evt);
+            }
+        });
+
+        jButton_listarParques.setText("Listar Parques");
+        jButton_listarParques.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_listarParquesMouseClicked(evt);
+            }
+        });
+        jButton_listarParques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_listarParquesActionPerformed(evt);
+            }
+        });
+
+        jButton_GuardarSistema.setText("Guardar Sistema");
+        jButton_GuardarSistema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_GuardarSistemaMouseClicked(evt);
+            }
+        });
+        jButton_GuardarSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GuardarSistemaActionPerformed(evt);
+            }
+        });
+
+        jButton_GuardarySalir.setText("Guardar y Salir");
+        jButton_GuardarySalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_GuardarySalirMouseClicked(evt);
+            }
+        });
+        jButton_GuardarySalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GuardarySalirActionPerformed(evt);
+            }
+        });
+
+        jButton_CargarSistema.setText("Cargar Sistema");
+        jButton_CargarSistema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_CargarSistemaMouseClicked(evt);
+            }
+        });
+        jButton_CargarSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CargarSistemaActionPerformed(evt);
+            }
+        });
+
+        jTextArea.setEditable(false);
+        jTextArea.setColumns(20);
+        jTextArea.setLineWrap(true);
+        jTextArea.setRows(5);
+        jScrollPane2.setViewportView(jTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(jButton1)
-                .addContainerGap(505, Short.MAX_VALUE))
+                .addGap(143, 143, 143)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_CargarSistema)
+                    .addComponent(jButton_GuardarySalir)
+                    .addComponent(jButton_GuardarSistema)
+                    .addComponent(jButton_listarParques)
+                    .addComponent(jButton_listarReservas)
+                    .addComponent(jButton_CrearReserva))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(144, 144, 144))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jButton1)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton_CrearReserva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_listarReservas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_listarParques)
+                        .addGap(61, 61, 61)
+                        .addComponent(jButton_CargarSistema)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_GuardarSistema)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_GuardarySalir)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_CrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CrearReservaActionPerformed
         // TODO add your handling code here:
-        JFrame_CrearReserva crearReserva = new JFrame_CrearReserva();
+        JFrame_CrearReserva crearReserva = new JFrame_CrearReserva(s_reservas);
         crearReserva.setmainWindows(this);
         crearReserva.setVisible(true);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jButton_CrearReservaActionPerformed
 
     //Click -> opcion de crear reserva
     
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jButton_CrearReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CrearReservaMouseClicked
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jButton_CrearReservaMouseClicked
+
+    private void jButton_listarReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_listarReservasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_listarReservasMouseClicked
+
+    private void jButton_listarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_listarReservasActionPerformed
+        // obtener todas las reservas
+        String reservas = s_reservas.getTodasLasReservas();
+        
+        //mostrar en texto
+        jTextArea.setText(reservas);
+        
+    }//GEN-LAST:event_jButton_listarReservasActionPerformed
+
+    private void jButton_listarParquesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_listarParquesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_listarParquesMouseClicked
+
+    private void jButton_listarParquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_listarParquesActionPerformed
+        // TODO add your handling code here:
+        String parques =  s_reservas.getListaParques();
+        jTextArea.setText(parques);
+    }//GEN-LAST:event_jButton_listarParquesActionPerformed
+
+    private void jButton_GuardarSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GuardarSistemaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_GuardarSistemaMouseClicked
+
+    private void jButton_GuardarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarSistemaActionPerformed
+        // TODO add your handling code here:
+        
+        s_reservas.guardarSistema("sistema.xml");
+    }//GEN-LAST:event_jButton_GuardarSistemaActionPerformed
+
+    private void jButton_GuardarySalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GuardarySalirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_GuardarySalirMouseClicked
+
+    private void jButton_GuardarySalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarySalirActionPerformed
+        // TODO add your handling code here:
+        //Guardar y salir
+        s_reservas.guardarSistema("sistema.xml");
+        System.exit(0);
+    }//GEN-LAST:event_jButton_GuardarySalirActionPerformed
+
+    private void jButton_CargarSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CargarSistemaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_CargarSistemaMouseClicked
+
+    private void jButton_CargarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CargarSistemaActionPerformed
+        // TODO add your handling code here:
+        s_reservas.cargarSistema("sistema.xml");
+    }//GEN-LAST:event_jButton_CargarSistemaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +264,14 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton_CargarSistema;
+    private javax.swing.JButton jButton_CrearReserva;
+    private javax.swing.JButton jButton_GuardarSistema;
+    private javax.swing.JButton jButton_GuardarySalir;
+    private javax.swing.JButton jButton_listarParques;
+    private javax.swing.JButton jButton_listarReservas;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
 }
 

@@ -4,6 +4,7 @@
  */
 package com.mycompany.g_28;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JFrame;
 public class JFrame_CrearReserva extends javax.swing.JFrame {
 
     private JFrame mainWindows;
-
+    private SistemaReservasParque s_reservas;
     //Paso la ventana principal para poder volver
     
     public void setmainWindows(JFrame mainWindows){
@@ -23,10 +24,24 @@ public class JFrame_CrearReserva extends javax.swing.JFrame {
     /**
      * Creates new form JFrame_CrearReserva
      */
-    public JFrame_CrearReserva() {
+    public JFrame_CrearReserva(SistemaReservasParque s_reservas) {
+        this.s_reservas = s_reservas;
         initComponents();
+        cargarOpcionesParque();
+        
     }
-
+    
+    public void cargarOpcionesParque(){
+        
+        //Agregar opciones de parque
+        ArrayList<Parque> parques = s_reservas.getParques();
+        
+        for (int i = 0; i < parques.size(); i++) {
+            jComboBox_Parque.addItem(parques.get(i).toString());
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,87 +51,201 @@ public class JFrame_CrearReserva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        jTextField_Nombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton_CrearReserva = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox_Parque = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox_Alojamiento = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jCheckBox_guia = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_Fecha = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField_Rut = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear Reserva");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Nombre.setToolTipText("Ingresa rut");
+        jTextField_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextField_NombreActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Rut:");
+
+        jButton_CrearReserva.setText("Crear Reserva");
+        jButton_CrearReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CrearReservaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Parque:");
+
+        jComboBox_Parque.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBox_ParqueComponentShown(evt);
+            }
+        });
+
+        jLabel3.setText("Alojamiento:");
+
+        jComboBox_Alojamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CABANA", "CAMPING" }));
+
+        jLabel4.setText("Guía:");
+
+        jLabel5.setText("Nombre:");
+
+        jTextField_Fecha.setToolTipText("(DD/MM/AAAA)");
+        jTextField_Fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_FechaActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Fecha:");
+
+        jTextField_Rut.setToolTipText("Ingresa rut");
+        jTextField_Rut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_RutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox_Parque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_Alojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox_guia)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextField_Fecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                    .addComponent(jTextField_Rut, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jButton_CrearReserva)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(209, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField_Rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox_Parque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBox_Alojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jCheckBox_guia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addComponent(jButton_CrearReserva)
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextField_NombreActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrame_CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrame_CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrame_CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrame_CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButton_CrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CrearReservaActionPerformed
+  
+        //Obtener strings
+        String nombre = jTextField_Nombre.getText();
+        String rut = jTextField_Rut.getText();
+        String fecha = jTextField_Fecha.getText();
+        
+        //Obtener numero de parque
+        int numParque = jComboBox_Parque.getSelectedIndex();
+        //Obtener tipo de alojamiento
+        int tipoAlojamiento = jComboBox_Alojamiento.getSelectedIndex();
+        //con guia
+        boolean conGuia = jCheckBox_guia.isSelected();
+        //CREAR RESERVA
+        s_reservas.crearReserva(rut, nombre, fecha, numParque, tipoAlojamiento, conGuia);
+        
+        //Volver a ventana principal
+        
+        mainWindows.setVisible(true);
+        
+        //quitar esta ventana
+        this.dispose();
+    }//GEN-LAST:event_jButton_CrearReservaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrame_CrearReserva().setVisible(true);
-            }
-        });
-    }
+    private void jTextField_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_FechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_FechaActionPerformed
+
+    private void jTextField_RutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_RutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_RutActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jComboBox_ParqueComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBox_ParqueComponentShown
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jComboBox_ParqueComponentShown
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_CrearReserva;
+    private javax.swing.JCheckBox jCheckBox_guia;
+    private javax.swing.JComboBox<String> jComboBox_Alojamiento;
+    private javax.swing.JComboBox<String> jComboBox_Parque;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextField_Fecha;
+    private javax.swing.JTextField jTextField_Nombre;
+    private javax.swing.JTextField jTextField_Rut;
     // End of variables declaration//GEN-END:variables
 }
