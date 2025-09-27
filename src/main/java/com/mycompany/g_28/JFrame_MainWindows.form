@@ -33,6 +33,7 @@
                   <Component id="jButton_listarParques" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton_listarReservas" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton_CrearReserva" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton_GenerarCSV" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="208" max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="276" max="-2" attributes="0"/>
@@ -52,7 +53,9 @@
                       <Component id="jButton_listarReservas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton_listarParques" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButton_GenerarCSV" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jButton_CargarSistema" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton_GuardarSistema" min="-2" max="-2" attributes="0"/>
@@ -134,5 +137,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButton_GenerarCSV">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Generar CSV"/>
+        <Property name="toolTipText" type="java.lang.String" value="Pasa las reservas a un archivo CSV"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_GenerarCSVMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_GenerarCSVActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

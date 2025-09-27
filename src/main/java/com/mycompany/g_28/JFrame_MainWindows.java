@@ -33,6 +33,7 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
         jButton_CargarSistema = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
+        jButton_GenerarCSV = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Reservas Parques");
@@ -115,6 +116,19 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
         jTextArea.setRows(5);
         jScrollPane2.setViewportView(jTextArea);
 
+        jButton_GenerarCSV.setText("Generar CSV");
+        jButton_GenerarCSV.setToolTipText("Pasa las reservas a un archivo CSV");
+        jButton_GenerarCSV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_GenerarCSVMouseClicked(evt);
+            }
+        });
+        jButton_GenerarCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GenerarCSVActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +141,8 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
                     .addComponent(jButton_GuardarSistema)
                     .addComponent(jButton_listarParques)
                     .addComponent(jButton_listarReservas)
-                    .addComponent(jButton_CrearReserva))
+                    .addComponent(jButton_CrearReserva)
+                    .addComponent(jButton_GenerarCSV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144))
@@ -144,7 +159,9 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
                         .addComponent(jButton_listarReservas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton_listarParques)
-                        .addGap(61, 61, 61)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_GenerarCSV)
+                        .addGap(25, 25, 25)
                         .addComponent(jButton_CargarSistema)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton_GuardarSistema)
@@ -227,6 +244,15 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
         s_reservas.cargarSistema("sistema.xml");
     }//GEN-LAST:event_jButton_CargarSistemaActionPerformed
 
+    private void jButton_GenerarCSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GenerarCSVMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_GenerarCSVMouseClicked
+
+    private void jButton_GenerarCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerarCSVActionPerformed
+        // TODO add your handling code here:
+        s_reservas.guardarReservasEnCSV("reservas.csv");
+    }//GEN-LAST:event_jButton_GenerarCSVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -266,6 +292,7 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_CargarSistema;
     private javax.swing.JButton jButton_CrearReserva;
+    private javax.swing.JButton jButton_GenerarCSV;
     private javax.swing.JButton jButton_GuardarSistema;
     private javax.swing.JButton jButton_GuardarySalir;
     private javax.swing.JButton jButton_listarParques;

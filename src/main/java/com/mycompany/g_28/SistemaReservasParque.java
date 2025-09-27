@@ -10,6 +10,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.File;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.util.Arrays;
 
 /*
 Sistema de Gestión de Reservas en Parques Nacionales: Administración de reservas de
@@ -138,4 +141,28 @@ public class SistemaReservasParque {
         }
         return listaParques;
     }
+    
+    public void guardarReservasEnCSV(String nombreArchivo) {
+        
+        try (PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo))) {
+            writer.println("Reservas"); // encabezado
+            
+            for (Parque parque : parques) {
+                
+                if (!parque.getReservas().isEmpty()) {
+
+                    for (Reserva reserva : parque.getReservas()) {
+                        writer.println(reserva.toString());
+                        
+                    }
+
+                }
+        }
+            System.out.println("Archivo CSV guardado: " + nombreArchivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+}
+    
+    
