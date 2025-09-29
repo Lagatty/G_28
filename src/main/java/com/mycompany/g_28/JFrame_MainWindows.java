@@ -34,6 +34,10 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
         jButton_GenerarCSV = new javax.swing.JButton();
+        jButton_FiltrarReservasPremium = new javax.swing.JButton();
+        jButton_MostrarStats = new javax.swing.JButton();
+        jButton_FuncionesBusqueda = new javax.swing.JButton();
+        jButton_OpcionesReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Reservas Parques");
@@ -129,45 +133,111 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
             }
         });
 
+        jButton_FiltrarReservasPremium.setText("Filtrar Reservas");
+        jButton_FiltrarReservasPremium.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_FiltrarReservasPremiumMouseClicked(evt);
+            }
+        });
+        jButton_FiltrarReservasPremium.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_FiltrarReservasPremiumActionPerformed(evt);
+            }
+        });
+
+        jButton_MostrarStats.setText("Mostrar estadísticas");
+        jButton_MostrarStats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_MostrarStatsMouseClicked(evt);
+            }
+        });
+        jButton_MostrarStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_MostrarStatsActionPerformed(evt);
+            }
+        });
+
+        jButton_FuncionesBusqueda.setText("Funciones de busqueda");
+        jButton_FuncionesBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_FuncionesBusquedaMouseClicked(evt);
+            }
+        });
+        jButton_FuncionesBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_FuncionesBusquedaActionPerformed(evt);
+            }
+        });
+
+        jButton_OpcionesReserva.setText("Opciones Reserva");
+        jButton_OpcionesReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_OpcionesReservaMouseClicked(evt);
+            }
+        });
+        jButton_OpcionesReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_OpcionesReservaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_CargarSistema)
-                    .addComponent(jButton_GuardarySalir)
-                    .addComponent(jButton_GuardarSistema)
-                    .addComponent(jButton_listarParques)
-                    .addComponent(jButton_listarReservas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_CrearReserva)
-                    .addComponent(jButton_GenerarCSV))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_listarReservas)
+                            .addComponent(jButton_listarParques)
+                            .addComponent(jButton_GenerarCSV))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_FiltrarReservasPremium)
+                            .addComponent(jButton_FuncionesBusqueda)
+                            .addComponent(jButton_MostrarStats)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton_CargarSistema)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_OpcionesReserva))
+                    .addComponent(jButton_GuardarySalir)
+                    .addComponent(jButton_GuardarSistema))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(144, 144, 144))
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jButton_CrearReserva)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_listarReservas)
+                            .addComponent(jButton_FiltrarReservasPremium))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_listarReservas)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_listarParques)
+                            .addComponent(jButton_MostrarStats))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_listarParques)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_GenerarCSV)
-                        .addGap(25, 25, 25)
-                        .addComponent(jButton_CargarSistema)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_GenerarCSV)
+                            .addComponent(jButton_FuncionesBusqueda))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_CargarSistema)
+                            .addComponent(jButton_OpcionesReserva))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton_GuardarSistema)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_GuardarySalir)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
@@ -253,6 +323,47 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
         s_reservas.guardarReservasEnCSV("reservas.csv");
     }//GEN-LAST:event_jButton_GenerarCSVActionPerformed
 
+    private void jButton_FiltrarReservasPremiumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_FiltrarReservasPremiumMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_FiltrarReservasPremiumMouseClicked
+    // SIA 2.5 - Funcionalidad propia del negocio: Filtrar reservas por tarifa premium
+    private void jButton_FiltrarReservasPremiumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FiltrarReservasPremiumActionPerformed
+        jTextArea.setText(s_reservas.filtrarReservasPremium());
+    }//GEN-LAST:event_jButton_FiltrarReservasPremiumActionPerformed
+
+    private void jButton_MostrarStatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_MostrarStatsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_MostrarStatsMouseClicked
+
+    private void jButton_MostrarStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MostrarStatsActionPerformed
+        // TODO add your handling code here:
+        
+        jTextArea.setText(s_reservas.mostrarEstadisticas());
+    }//GEN-LAST:event_jButton_MostrarStatsActionPerformed
+
+    private void jButton_FuncionesBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_FuncionesBusquedaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_FuncionesBusquedaMouseClicked
+
+    private void jButton_FuncionesBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FuncionesBusquedaActionPerformed
+        // Abrir ventana de funciones de busqueda
+        
+        
+    }//GEN-LAST:event_jButton_FuncionesBusquedaActionPerformed
+
+    private void jButton_OpcionesReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_OpcionesReservaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_OpcionesReservaMouseClicked
+
+    private void jButton_OpcionesReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_OpcionesReservaActionPerformed
+        // TODO add your handling code here:
+        JFrame_CRUD opcionesReserva = new JFrame_CRUD();
+        opcionesReserva.setSistemaReservas(s_reservas);
+        opcionesReserva.setMainWindows(this);
+        opcionesReserva.setVisible(true);
+        
+    }//GEN-LAST:event_jButton_OpcionesReservaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,9 +403,13 @@ public class JFrame_MainWindows extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_CargarSistema;
     private javax.swing.JButton jButton_CrearReserva;
+    private javax.swing.JButton jButton_FiltrarReservasPremium;
+    private javax.swing.JButton jButton_FuncionesBusqueda;
     private javax.swing.JButton jButton_GenerarCSV;
     private javax.swing.JButton jButton_GuardarSistema;
     private javax.swing.JButton jButton_GuardarySalir;
+    private javax.swing.JButton jButton_MostrarStats;
+    private javax.swing.JButton jButton_OpcionesReserva;
     private javax.swing.JButton jButton_listarParques;
     private javax.swing.JButton jButton_listarReservas;
     private javax.swing.JScrollPane jScrollPane2;

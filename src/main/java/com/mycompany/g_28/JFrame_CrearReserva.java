@@ -204,7 +204,14 @@ public class JFrame_CrearReserva extends javax.swing.JFrame {
         //con guia
         boolean conGuia = jCheckBox_guia.isSelected();
         //CREAR RESERVA
-        s_reservas.crearReserva(rut, nombre, fecha, numParque, tipoAlojamiento, conGuia);
+        try {
+            s_reservas.crearReserva(rut, nombre, fecha, numParque, tipoAlojamiento, conGuia);
+        } catch (ReservaException ex) {
+            // Manejo de la excepción
+            ex.printStackTrace();
+        }
+
+        
         
         //Volver a ventana principal
         
